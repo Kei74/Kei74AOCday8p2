@@ -2,8 +2,8 @@
 #include <vector>
 #include <map>
 #include <unordered_set>
-#include "functs.h"
 std::map<int,int> m;
+std::string readstr(std::ifstream &fin);
 int cmp(std::string &a, std::unordered_set<char> &b);
 int decode(std::vector<std::string> &inp, std::vector<std::string> &sig)
 {
@@ -69,4 +69,15 @@ int main()
     std::cout<<count<<std::endl;
     getchar();
     return 0;
+}
+
+std::string readstr(std::ifstream &fin)
+{
+    std::string s;
+    while(!checkl(fin.peek()))
+        fin.get();
+    while (checkl(fin.peek()))
+        s.push_back(fin.get());
+    fin.get();
+    return s;
 }
